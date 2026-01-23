@@ -1,0 +1,22 @@
+generated: "2026-01-18"
+project: "ai-interviewer"
+project_type: "greenfield"
+selected_track: "bmad-method"
+field_type: "greenfield"
+workflow_path: "_bmad/bmm/workflows/workflow-status/paths/method-greenfield.yaml"
+workflow_status:
+  brainstorm-project: "/Users/hoanicross/devel/perso/genai/mcp/ai-interviewer/_bmad-output/analysis/brainstorming-session-2026-01-18.md"
+  research: "/Users/hoanicross/devel/perso/genai/mcp/ai-interviewer/_bmad-output/planning-artifacts/research/market-spontaneous-consultation-frameworks-research-2026-01-20.md"
+  product-brief: "/Users/hoanicross/devel/perso/genai/mcp/ai-interviewer/_bmad-output/planning-artifacts/product-brief-ai-interviewer-2026-01-20.md"
+  prd: required
+  create-ux-design: conditional
+  create-architecture: required
+  create-epics-and-stories: required
+  test-design: optional
+  implementation-readiness: required
+  sprint-planning: required
+last_updated: "2026-01-20T16:15:00Z"
+completion_metadata:
+  product-brief:
+    completed_at: "2026-01-20T16:15:00Z"
+    status: "complete"

@@ -5,18 +5,35 @@ selected_track: "bmad-method"
 field_type: "greenfield"
 workflow_path: "_bmad/bmm/workflows/workflow-status/paths/method-greenfield.yaml"
 workflow_status:
-  brainstorm-project: "/Users/hoanicross/devel/perso/genai/mcp/ai-interviewer/_bmad-output/analysis/brainstorming-session-2026-01-18.md"
-  research: "/Users/hoanicross/devel/perso/genai/mcp/ai-interviewer/_bmad-output/planning-artifacts/research/market-spontaneous-consultation-frameworks-research-2026-01-20.md"
-  product-brief: "/Users/hoanicross/devel/perso/genai/mcp/ai-interviewer/_bmad-output/planning-artifacts/product-brief-ai-interviewer-2026-01-20.md"
-  prd: required
-  create-ux-design: conditional
-  create-architecture: required
-  create-epics-and-stories: required
+  brainstorm-project: "_bmad-output/analysis/brainstorming-session-2026-01-18.md"
+  research: "_bmad-output/planning-artifacts/research/market-spontaneous-consultation-frameworks-research-2026-01-20.md"
+  product-brief: "_bmad-output/planning-artifacts/product-brief-ai-interviewer-2026-01-20.md"
+  prd: "_bmad-output/planning-artifacts/prd.md"
+  create-ux-design: "_bmad-output/planning-artifacts/ux-design-specification.md"
+  create-architecture: "_bmad-output/planning-artifacts/architecture.md"
+  create-epics-and-stories: "_bmad-output/planning-artifacts/epics-and-stories.md"
   test-design: optional
   implementation-readiness: required
   sprint-planning: required
-last_updated: "2026-01-20T16:15:00Z"
+last_updated: "2026-02-02T13:15:00Z"
 completion_metadata:
   product-brief:
     completed_at: "2026-01-20T16:15:00Z"
     status: "complete"
+  prd:
+    completed_at: "2026-01-20T00:00:00Z"
+    status: "complete"
+  create-ux-design:
+    completed_at: "2026-01-24T00:00:00Z"
+    status: "complete"
+  create-architecture:
+    completed_at: "2026-01-24T00:00:00Z"
+    status: "complete"
+  create-epics-and-stories:
+    completed_at: "2026-02-02T13:15:00Z"
+    status: "complete"
+    summary:
+      total_epics: 7
+      total_stories: 34
+      total_story_points: 162
+      sprints_planned: 6

@@ -267,6 +267,88 @@ The project uses BMAD workflows for structured development:
 
 ---
 
+## GitHub Issue Workflow
+
+### Modus Operandi for Issue Management
+
+When working on any story or task linked to a GitHub issue, follow this workflow:
+
+#### 1. **Before Starting Work**
+- Assign yourself to the GitHub issue
+- Move issue to "In Progress" status (if using project boards)
+- Reference the issue number in your work context
+
+#### 2. **During Implementation**
+- Keep notes on key implementation decisions
+- Track files created/modified
+- Document any workarounds or special considerations
+
+#### 3. **After Completing Work**
+Update the GitHub issue with:
+
+```markdown
+### Implementation Details
+
+#### Files Created/Modified:
+- `path/to/file.ts` - Description of changes
+
+#### Key Implementation Points:
+1. Point 1
+2. Point 2
+
+#### Build Validation:
+✅ `npm run build` passes successfully
+```
+
+#### 4. **Closing the Issue**
+- Update the issue body with detailed implementation notes
+- Check all acceptance criteria boxes `[x]`
+- Close the issue with state: "closed"
+- Ensure assignee is set
+
+### Issue Update Template
+
+When closing an issue, update its body to include:
+
+```markdown
+## Story [ID]: [Title]
+
+**Epic:** [Epic Name]
+**Points:** [X]
+**Priority:** [Critical/High/Medium/Low]
+
+### Acceptance Criteria
+- [x] Criterion 1
+- [x] Criterion 2
+
+### Implementation Details
+
+#### Files Created:
+- `src/path/file.ts` - Description
+
+#### Configuration:
+[Code snippets or key configuration details]
+
+#### Build Validation:
+✅ All tests pass
+```
+
+### GitHub MCP Integration
+
+**Important**: Always use MCP (Model Context Protocol) for GitHub operations:
+
+```typescript
+// Use MCP tools, NOT gh CLI
+mcp__github__update_issue   // Update issue details
+mcp__github__get_issue      // Read issue information
+mcp__github__create_issue   // Create new issues
+mcp__github__list_issues    // List repository issues
+```
+
+This ensures consistent access and proper authentication across all environments.
+
+---
+
 ## Implementation Standards Each Agent Must Follow
 
 ### All Agents

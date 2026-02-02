@@ -267,6 +267,207 @@ The project uses BMAD workflows for structured development:
 
 ---
 
+## Git Workflow with Merge Requests
+
+### Modus Operandi for Code Changes
+
+**All code implementations MUST follow this branch-based workflow with Merge Request validation.**
+
+#### 1. **Branch Strategy**
+
+```
+main (protected)
+  └── feature/E{epic}-S{story}-{short-description}
+  └── fix/{issue-number}-{short-description}
+  └── refactor/{short-description}
+```
+
+**Branch Naming Convention:**
+- Features: `feature/E1-S3-mandate-dtos`
+- Bug fixes: `fix/42-auth-guard-null-check`
+- Refactoring: `refactor/logger-service-optimization`
+
+#### 2. **Before Starting Implementation**
+
+1. Create a new branch from `main`:
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b feature/E{epic}-S{story}-{description}
+   ```
+2. Assign yourself to the related GitHub issue
+3. Reference the issue number in commits
+
+#### 3. **During Implementation**
+
+- Make **atomic commits** with Gitmoji:
+  ```
+  🔐 feat(E2-S2): implement API key authentication guard
+  🧪 test(E2-S2): add unit tests for auth guard
+  📝 docs(E2-S2): update API documentation
+  ```
+- Each commit should be self-contained and buildable
+- Push regularly to remote branch
+
+#### 4. **Creating the Merge Request**
+
+When implementation is complete:
+
+1. **Push final changes** to remote branch
+2. **Create Pull Request** via GitHub MCP:
+   ```typescript
+   mcp__github__create_pull_request({
+     owner: "hcross",
+     repo: "ai-interviewer",
+     title: "feat(E2-S2): Implement API Key Authentication Guard",
+     head: "feature/E2-S2-auth-guard",
+     base: "main",
+     body: `## Summary
+   - Implemented Bearer token authentication
+   - Added tenant context extraction
+   - Unit tests with 85% coverage
+
+   ## Related Issue
+   Closes #15
+
+   ## Checklist
+   - [x] TypeScript strict mode
+   - [x] Unit tests added
+   - [x] Build passes
+   - [x] Documentation updated`
+   })
+   ```
+
+3. **Request Review** - Wait for human validation before merge
+
+#### 5. **Merge Process**
+
+- **Only the human reviewer** can approve and merge the PR
+- After approval, use squash merge to maintain clean history
+- Delete the feature branch after merge
+
+#### 6. **Parallel Implementation**
+
+Multiple stories can be implemented in parallel:
+- Each story gets its own branch
+- Each story gets its own MR
+- Stories with dependencies must be merged in order
+- Independent stories can be merged in any order
+
+**Example Sprint 2 Parallel Branches:**
+```
+main
+  ├── feature/E2-S2-auth-guard
+  ├── feature/E2-S3-tenant-context-decorator
+  ├── feature/E2-S4-rate-limiting
+  ├── feature/E1-S1-mandate-entity
+  ├── feature/E1-S2-mandate-repository
+  └── feature/E1-S3-mandate-dtos
+```
+
+#### 7. **Commit Message Format**
+
+```
+<gitmoji> <type>(<scope>): <description>
+
+[optional body]
+
+[optional footer]
+
+Generated with [Claude Code](https://claude.ai/code)
+via [Happy](https://happy.engineering)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+Co-Authored-By: Happy <yesreply@happy.engineering>
+```
+
+**Types:** feat, fix, docs, test, refactor, chore, style, perf
+**Gitmoji examples:** 🔐 (security), 🧪 (tests), 📝 (docs), ✨ (feature), 🐛 (bugfix)
+
+---
+
+## GitHub Issue Workflow
+
+### Modus Operandi for Issue Management
+
+When working on any story or task linked to a GitHub issue, follow this workflow:
+
+#### 1. **Before Starting Work**
+- Assign yourself to the GitHub issue
+- Move issue to "In Progress" status (if using project boards)
+- Reference the issue number in your work context
+
+#### 2. **During Implementation**
+- Keep notes on key implementation decisions
+- Track files created/modified
+- Document any workarounds or special considerations
+
+#### 3. **After Completing Work**
+Update the GitHub issue with:
+
+```markdown
+### Implementation Details
+
+#### Files Created/Modified:
+- `path/to/file.ts` - Description of changes
+
+#### Key Implementation Points:
+1. Point 1
+2. Point 2
+
+#### Build Validation:
+✅ `npm run build` passes successfully
+```
+
+#### 4. **Closing the Issue**
+- Update the issue body with detailed implementation notes
+- Check all acceptance criteria boxes `[x]`
+- Close the issue with state: "closed"
+- Ensure assignee is set
+
+### Issue Update Template
+
+When closing an issue, update its body to include:
+
+```markdown
+## Story [ID]: [Title]
+
+**Epic:** [Epic Name]
+**Points:** [X]
+**Priority:** [Critical/High/Medium/Low]
+
+### Acceptance Criteria
+- [x] Criterion 1
+- [x] Criterion 2
+
+### Implementation Details
+
+#### Files Created:
+- `src/path/file.ts` - Description
+
+#### Configuration:
+[Code snippets or key configuration details]
+
+#### Build Validation:
+✅ All tests pass
+```
+
+### GitHub MCP Integration
+
+**Important**: Always use MCP (Model Context Protocol) for GitHub operations:
+
+```typescript
+// Use MCP tools, NOT gh CLI
+mcp__github__update_issue   // Update issue details
+mcp__github__get_issue      // Read issue information
+mcp__github__create_issue   // Create new issues
+mcp__github__list_issues    // List repository issues
+```
+
+This ensures consistent access and proper authentication across all environments.
+
+---
+
 ## Implementation Standards Each Agent Must Follow
 
 ### All Agents
@@ -358,4 +559,4 @@ Examples of what to document:
 ---
 
 **Last Updated**: 2026-02-02
-**Version**: 1.0
+**Version**: 1.1

@@ -47,9 +47,10 @@ tmp/
 temp/
 *.tmp
 
-# MCP and build artifacts
-_bmad/
-_bmad-output/
+# MCP and build artifacts (but track important BMAD output)
+_bmad-output/analysis/
+_bmad-output/planning-artifacts/research/
+_bmad-output/planning-artifacts/*.html
 
 # NestJS specific
 dist/

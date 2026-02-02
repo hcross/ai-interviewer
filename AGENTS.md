@@ -2,6 +2,80 @@
 
 This document describes the AI agents that support development and architecture decisions for the AI Interviewer platform.
 
+## BMAD (Business Mindset AI Development)
+
+This project uses **BMAD** - a comprehensive AI-assisted development methodology that orchestrates multiple specialized agents through structured workflows. BMAD provides a proven path from vision to production-ready code through collaborative agent interactions.
+
+### Why BMAD?
+
+- **Structured Approach**: Clear phases (Solutioning → Implementation → Validation)
+- **Agent Collaboration**: Multiple agents with distinct expertise working together
+- **Knowledge Capture**: Continuous documentation of decisions and patterns
+- **Quality Gates**: Validation checkpoints before moving to next phase
+- **Scalability**: Patterns and decisions reusable across future projects
+
+### Key BMAD Artifacts
+
+Located in `_bmad-output/planning-artifacts/`:
+
+| Document | Purpose | Owner | Status |
+|----------|---------|-------|--------|
+| `product-brief-*.md` | Vision, stakeholders, market context | PM + Analyst | ✅ Complete |
+| `prd.md` | Detailed requirements and acceptance criteria | PM + Analyst | ✅ Complete |
+| `architecture.md` | System design, tech decisions, data models | Architect | ✅ Complete |
+| `ux-design-specification.md` | Interface designs, user flows, interactions | UX Designer | ✅ Complete |
+| `bmm-workflow-status.yaml` | Current phase and progress tracking | SM | 🔄 Updated per sprint |
+
+### Accessing BMAD Workflows
+
+All available BMAD workflows are accessible through Claude Code skills:
+
+```bash
+# View all available workflows
+claude-code /help
+
+# Check current project phase and what's next
+claude-code /workflow-status
+
+# Create the next story from epics
+claude-code /create-story
+
+# Implement a specific story
+claude-code /dev-story [story-id]
+
+# Run adversarial code review
+claude-code /code-review
+
+# Design and implement tests
+claude-code /testarch-atdd
+
+# Facilitate team brainstorming
+claude-code /brainstorming
+```
+
+### For AI Agents: Critical Rule for Future Development
+
+**⚠️ KNOWLEDGE RETENTION REQUIREMENT**
+
+Any action or decision that could impact future agents MUST be documented in this file. Examples:
+
+- New implementation patterns discovered
+- Workarounds for framework limitations
+- Tenant-specific configuration details
+- Performance optimizations applied
+- Security considerations encountered
+- Integration issues and solutions
+- Testing patterns that proved effective
+- Deployment considerations
+
+**Update Procedure**:
+1. Complete your implementation task
+2. Identify what future agents should know
+3. Add a new subsection in appropriate agent role section or in a "Lessons Learned" section
+4. Commit with message: `📚 docs: record [brief description] in AGENTS.md`
+
+This ensures knowledge accumulates and prevents repeated mistakes or research.
+
 ## Agent Roles
 
 ### Product Manager (PM)
@@ -219,6 +293,33 @@ The project uses BMAD workflows for structured development:
 - Document each module with a README.md
 - Use code examples from actual implementation
 - Maintain a current glossary of domain terms
+
+### All Agents - Knowledge Retention (CRITICAL)
+
+**Every implementation MUST include knowledge capture in this file.**
+
+When you complete any significant work:
+
+1. **Identify** what future agents need to know
+2. **Document** in the appropriate agent section or create new subsection
+3. **Update** this file with findings, workarounds, patterns
+4. **Commit** with: `📚 docs: record [description] in AGENTS.md`
+
+Examples of what to document:
+- New discovered patterns or best practices
+- Framework quirks or limitations encountered
+- Tenant context handling edge cases
+- Database query optimization insights
+- LLM integration challenges and solutions
+- Testing strategies that worked well
+- Build/deployment gotchas
+- Performance optimization techniques
+
+**This is not optional.** Failure to update AGENTS.md means:
+- Future agents duplicate work
+- Knowledge is lost between sprints
+- Institutional learning never accumulates
+- Quality and velocity decline over time
 
 ---
 

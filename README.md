@@ -139,6 +139,65 @@ Interview workflows use Bull queues with exponential backoff retry logic:
 - Persistent job storage in Redis
 - Automatic failure logging
 
+## BMAD Workflow
+
+This project is managed using **BMAD (Business Mindset AI Development)** - a comprehensive AI-assisted development methodology that structures product design and implementation through collaborative agent workflows.
+
+### BMAD Phases
+
+**Solutioning Phase**: Discovery and design
+- **Research**: Market, technical, and domain analysis
+- **Product Brief**: Stakeholder interviews and vision definition
+- **PRD**: Comprehensive requirements documentation
+- **Architecture**: System design and technology decisions
+- **UX Design**: Interface and interaction specifications
+- **Epics & Stories**: Work breakdown and acceptance criteria
+- **Implementation Readiness**: Pre-flight validation
+
+**Implementation Phase**: Development and delivery
+- **Sprint Planning**: Extract and track work items
+- **Dev Stories**: Implement individual user stories
+- **Code Review**: Adversarial quality review
+- **Test Automation**: Expand and maintain test coverage
+- **CI/CD Setup**: Quality gates and pipelines
+
+### Accessing BMAD Artifacts
+
+All planning artifacts are stored in `_bmad-output/planning-artifacts/`:
+
+```
+_bmad-output/planning-artifacts/
+├── product-brief-*.md              # Initial discovery and vision
+├── prd.md                          # Product Requirements Document
+├── architecture.md                 # System design and tech decisions
+├── ux-design-specification.md      # Interface and UX patterns
+├── prd-validation-report.md        # Requirements validation
+└── bmm-workflow-status.yaml        # Current phase and progress
+```
+
+### Running BMAD Workflows
+
+Use the available BMAD workflow skills to advance the project:
+
+```bash
+# Check current project status
+claude-code /workflow-status
+
+# Create next user story
+claude-code /create-story
+
+# Execute a story implementation
+claude-code /dev-story [story-id]
+
+# Run code review
+claude-code /code-review
+
+# Generate test cases
+claude-code /testarch-atdd
+```
+
+For a complete list of available BMAD workflows, see `AGENTS.md`.
+
 ## Contributing
 
 1. Read `docs/project-context.md` carefully
@@ -147,6 +206,7 @@ Interview workflows use Bull queues with exponential backoff retry logic:
 4. Include tenant context in all data operations
 5. Use Gitmoji for atomic, descriptive commits
 6. Keep modules focused on single responsibility
+7. **Important**: Document any significant implementation decisions in `AGENTS.md` for future agents
 
 ## Deployment
 
